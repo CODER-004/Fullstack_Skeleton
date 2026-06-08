@@ -16,7 +16,7 @@ function profile() {
             }
 
             try {
-                const response = await fetch("http://localhost:5001/api/auth/me", {
+                const response = await fetch("", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`,
