@@ -4,7 +4,7 @@ import AppNavbar from './components/navbar.jsx';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
-import profile from './pages/profile.jsx';
+import Profile from './pages/profile.jsx';
 
 function App() {
   const [authToken, setAuthToken] = useState(localStorage.getItem('token'));
@@ -30,7 +30,7 @@ function App() {
         <Route path="/login" element={<Login onLoginSuccess={handleAuthSuccess} />} />
         <Route path="/register" element={<Register onRegisterSuccess={handleAuthSuccess} />} />
         <Route path="/home" element={authToken ? <Home /> : <Navigate to="/login" />} />
-        <Route path="/profile" element={authToken ? <profile /> : <Navigate to="/login" />} />
+        <Route path="/profile" element={authToken ? <Profile /> : <Navigate to="/login" />} />
         <Route path="/" element={<Navigate to="/home" />} />
       </Routes>
     </Router>

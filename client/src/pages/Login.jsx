@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom"; 
 
-function Login(onLoginSuccess) {
+function Login({onLoginSuccess}) {
     const [loginError, setLoginError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate(); 
@@ -21,17 +21,17 @@ function Login(onLoginSuccess) {
             const response = await fetch("http://localhost:5001/api/auth/login", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json", // Tells the server you are sending JSON
                 },
                 body: JSON.stringify({
                     username: data.username,
                     password: data.password,
-                }),
+                })
             });
 
             const result = await response.json();
             
-            if (response.ok) {
+            if (result.success) {
                 console.log("Login successful:", result);
                 onLoginSuccess(result.token);
                 navigate("/");

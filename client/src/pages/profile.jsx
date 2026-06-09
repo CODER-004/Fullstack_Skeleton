@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function profile() {
+function Profile() { // 1. Capitalized function name
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -27,6 +27,7 @@ function profile() {
                 const result = await response.json();
 
                 if (response.ok && result.success) {
+                    console.log("User profile fetched successfully:", result);
                     setUser(result.user);
                 } else {
                     localStorage.removeItem("token");
@@ -52,7 +53,7 @@ function profile() {
 
     return (
         <div style={{ padding: "20px", textAlign: "center" }}>
-            <h2>Welcome Home, {user?.name}!</h2>
+            <h2>Welcome Home, {user?.name}!</h2> {/* 2. Added optional chaining */}
             <p>Username: @{user?.username}</p>
             <p>Email: {user?.email}</p>
             
@@ -66,4 +67,4 @@ function profile() {
     );
 }
 
-export default profile;
+export default Profile; // 1. Capitalized export
