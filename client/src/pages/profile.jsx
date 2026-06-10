@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Profile() { // 1. Capitalized function name
+function Profile() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ function Profile() { // 1. Capitalized function name
             }
 
             try {
-                const response = await fetch("", {
+                const response = await fetch("http://localhost:5001/api/auth/me", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`,
@@ -67,4 +67,4 @@ function Profile() { // 1. Capitalized function name
     );
 }
 
-export default Profile; // 1. Capitalized export
+export default Profile;

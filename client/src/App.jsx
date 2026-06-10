@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login onLoginSuccess={handleAuthSuccess} />} />
         <Route path="/register" element={<Register onRegisterSuccess={handleAuthSuccess} />} />
-        <Route path="/home" element={authToken ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/profile" element={authToken ? <Profile /> : <Navigate to="/login" />} />
         <Route path="/" element={<Navigate to="/home" />} />
       </Routes>
